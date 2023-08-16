@@ -1,6 +1,6 @@
 
 from typing import Final
-from Piece import Move, Piece
+from piece import Move, Piece
 
 class Queen(Piece):
 
@@ -14,11 +14,8 @@ class Queen(Piece):
              (-1,-1),(-2,-2),(-3,-3),(-4,-4),(-5,-5),(-6,-6),(-7,-7),
              ]
     
-    def __init__(self, pos):
-        self.pos = pos
-
-
     def canMove(self, move, board):
+        pass
         
 
 

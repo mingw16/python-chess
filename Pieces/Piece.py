@@ -1,9 +1,10 @@
 
 from collections import namedtuple
+from .. import vec
 
-move = namedtuple('move', ['x', 'y'])
 
 class Piece:
 
-    def __init__(self):
-        pass
+    def __init__(self, color:int, pos:vec):
+        self.color = color
+        self.pos = pos

@@ -1,8 +1,6 @@
-class Pawn:
+from piece import Piece
 
-    def __init__(self, color):
-        self.color = color
-
+class Pawn(Piece):
 
     def getPossibleMoves(self, board):
         pass
