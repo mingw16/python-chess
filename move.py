@@ -15,39 +15,21 @@ class Move:
 
 
     """
-    pawn_expr = re.compile('[a-h][1-8]')
-    piece_expr = re.compile('[K,N,R,B,Q][a-h][1-8]')
-    piece_takes_expr = re.compile('[K,N,R,B,Q]x[a-h][1-8]')
-    pawn_takes_expr = re.compile('[a-h]x[a-h][1-8]')
-    short_castle_expr = re.compile('(0-0)|(O-O)')
-    long_castle_expr = re.compile('(0-0-0)|(O-O-O)')
-    promote_expr = re.compile('[a-h][1-8]=[K,N,Q,B,R]')
-
+    move_pattern = ['[a-h][1-8]','[K,N,R,B,Q][a-h][1-8]','[K,N,R,B,Q]x[a-h][1-8]','[a-h]x[a-h][1-8]','(0-0)|(O-O)','(0-0-0)|(O-O-O)','[a-h][1-8]=[K,N,Q,B,R]']
 
 
     def __init__(self, move:str):
         """
         initializes an object with parameters
         """
-        if len(move) >5:
-            raise MoveError("invalid move")
-        
-        if self.pawn_expr.match(move) is not None:
-            self.move = move
-        elif self.piece_expr.match(move) is not None:
-            self.move = move
-        elif self.piece_takes_expr.match(move) is not None:
-            self.move = move
-        elif self.pawn_takes_expr.match(move) is not None:
-            self.move = move
-        elif self.short_castle_expr.match(move) is not None:
-            self.move = move
-        elif self.long_castle_expr.match(move) is not None:
-            self.move = move
-        elif self.promote_expr.match(move) is not None:
-            self.move = move
-        
-        else:
+        correct = False
+        for pattern in self.move_pattern:
+            expr = re.compile(pattern)
+            if expr.match(move) is not None:
+                correct = True
+                self.move = move
+                break
+        if not correct or len(move) >5 or len(move) < 2:
             raise MoveError("invalid move")
 
     

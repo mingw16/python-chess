@@ -29,13 +29,13 @@ class Game:
         print("GRASZ KOLOREM BIAŁYM \n PODAJ RUCH:")
         while True:
             user_input = input()
-            print(user_input)
+            if user_input == "!q":
+                break
             try:
                 move = Move(user_input)
             except MoveError:
-                print("podaj ruch jeszcze raz")
+                print("Podaj wlasciwy ruch")
+                print(user_input)
                 continue
-            if user_input == "!q":
-                break
                 
 
